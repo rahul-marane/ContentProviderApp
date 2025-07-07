@@ -1,8 +1,10 @@
 package com.example.randomstringapp.data.repository
 
 import android.content.ContentResolver
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.randomstringapp.data.model.RandomStringData
 import com.example.randomstringapp.data.db.RandomStringDao
 import com.example.randomstringapp.data.model.RandomTextResponse
@@ -44,6 +46,7 @@ class RandomStringRepository @Inject constructor(
      * @param length The maximum length of the random string to generate
      * @return The generated RandomString or null if an error occurred
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     suspend fun generateRandomString(length: Int): Result<RandomStringData> = withContext(Dispatchers.IO) {
         try {
             // Create the query arguments bundle with the length limit
