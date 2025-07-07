@@ -1,5 +1,7 @@
 package com.example.randomstringapp.ui.view
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.randomstringapp.data.model.RandomStringData
@@ -43,6 +45,7 @@ class RandomStringViewModel @Inject constructor(
      *
      * @param length The maximum length of the random string to generate
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     fun generateRandomString(length: Int) {
         if (length <= 0) {
             _generationState.value = GenerationState.Error("Length must be greater than 0")
